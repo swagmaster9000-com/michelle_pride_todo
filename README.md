@@ -91,10 +91,3 @@ You can easily change the styling of the app by editing the **`styles.css`** fil
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-## Contact
-Your Name - [@YourTwitterHandle](https://twitter.com/YourTwitterHandle) - [your.email@example.com](mailto:your.email@example.com)
-
-Project Link: [https://github.com/[your-username]/[your-repo-name]](https://github.com/[your-username]/[your-repo-name])
