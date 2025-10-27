@@ -79,12 +79,12 @@ ul li:before {
 ul li.completed {
     background: #dcdcdc;
     text-decoration: line-through;
-    color: #7f8c8d;
+    color: #279eae;
 }
 
 ul li.completed:before {
     content: '✔';
-    color: #27ae60;
+    color: #2759ae;
 }
 
 .item-text {
@@ -101,3 +101,20 @@ ul li.completed:before {
 .delete-btn:hover {
     color: #e74c3c;
 }
+
+    .deadline {
+        font-size: 0.9em;
+        color: midnightblue;
+        margin-left: 10px;
+    }
+
+    .complete-btn {
+        margin-left: 10px;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+
+    .completed .item-text {
+        text-decoration: line-through;
+        color: gray;
+    }
