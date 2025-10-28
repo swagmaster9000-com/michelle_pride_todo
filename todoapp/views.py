@@ -20,10 +20,20 @@ def add_todo(request):
         TodoItem.objects.create(user=request.user, title=title, deadline=deadline)
     return redirect('todo_list')
 
-def toggle_complete(request, item_id):
-    item = get_object_or_404(TodoItem, id=item_id, user=request.user)
-    item.completed = not item.completed
-    item.save()
+def edit_todo(request, task_id):
+    task = get_object_or_404(TodoItem, id=task_id)
+    if request.method == 'POST':
+        task.title = request.POST['title']
+        task.deadline = request.POST.get('deadline') or None
+        task.save()
+        return redirect('todo_list')
+    return render(request, 'todoapp/edit_todo.html', {'task': task})
+
+def toggle_complete(request, task_id):
+    task = get_object_or_404(TodoItem, id=task_id)
+    if request.method == 'POST':
+        task.completed = not task.completed
+        task.save()
     return redirect('todo_list')
 
 def delete_todo(request, item_id):

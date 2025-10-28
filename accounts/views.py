@@ -21,11 +21,12 @@ def login_view(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        if user:
+        if user is not None:
             login(request, user)
             return redirect('todo_list')  # must match the name in your todoapp urls
         else:
             messages.error(request, "Invalid credentials")
+            return render(request, 'accounts/login.html',{'error': messages.error})
     return render(request, 'accounts/login.html')
 
 def logout_view(request):
