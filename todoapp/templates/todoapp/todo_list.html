@@ -1,66 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My To-Do List</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'todoapp/styles.css' %}">
-</head>
-<body>
-<div class="header">
-    <h1>My To-Do List</h1>
-    {% if user.is_authenticated %}
-    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
-    {% endif %}
-</div>
-<div class="container">
-    <h1>My To-Do List</h1>
-    <form method="post" action="{% url 'add_todo' %}" class="add-form">
-        {% csrf_token %}
-        <input type="text" name="title" placeholder="Add a new to-do..." required>
-        <input type="datetime-local" name="deadline" placeholder="Deadline (optional)">
-        <button type="submit">Add</button>
-    </form>
-    <ul>
-        {% for item in items %}
-        <li class="{% if item.completed %}completed{% endif %}">
-            <div class="item-text">
-                {{ item.title }}
-                {% if item.deadline %}
-                <span class="deadline" data-deadline="{{ item.deadline|date:'Y-m-d\\TH:i:s' }}"></span>
-                {% endif %}
-            </div>
-            <a href="{% url 'toggle_complete' item.id %}" class="complete-btn">
-                {% if item.completed %}✅{% else %}⬜{% endif %}
-            </a>
-            <a href="{% url 'delete_todo' item.id %}" class="delete-btn">❌</a>
-        </li>
-        {% empty %}
-        <li>No to-do items yet.</li>
-        {% endfor %}
-    </ul>
-</div>
+{% extends "base.html" %}
+{% block title %}My To-Do List{% endblock %}
 
-<script>
-    document.querySelectorAll('.deadline').forEach(function(span) {
-        const deadline = new Date(span.dataset.deadline);
-        function updateCountdown() {
-            const now = new Date();
-            const diff = deadline - now;
-            if(diff > 0){
-                const hours = Math.floor(diff / 1000 / 60 / 60);
-                const minutes = Math.floor((diff / 1000 / 60) % 60);
-                const seconds = Math.floor((diff / 1000) % 60);
-                span.textContent = ` | Time left: ${hours}h ${minutes}m ${seconds}s`;
-            } else {
-                span.textContent = ' | Deadline passed';
-            }
-        }
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    });
-</script>
-</body>
-</html>
+{% block content %}
+<h1>My To-Do List</h1>
+<a href="{% url 'logout' %}" style="float:right; color:red;">Logout</a>
 
+<form method="post" action="{% url 'add_todo' %}">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Add a new to-do..." required>
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    {% for item in items %}
+    <li class="{% if item.completed %}completed{% endif %}">
+        <div onclick="window.location.href='{% url 'toggle_complete' item.id %}'">
+            {{ item.title }}
+        </div>
+        <a href="{% url 'delete_todo' item.id %}">❌</a>
+    </li>
+    {% empty %}
+    <li>No to-do items yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

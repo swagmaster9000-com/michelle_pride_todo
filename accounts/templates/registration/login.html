@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <style>
-        body {
-            background-color: blue;
-            color: white;
-            text-align: center;
-            font-family: Arial;
-        }
-        .stars {
-            color: yellow;
-            font-size: 2em;
-        }
-        form {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-<div class="stars">★ ★ ★</div>
-<h2>Login</h2>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h1>Login</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Log In</button>
+    <button type="submit">Login</button>
 </form>
-<div class="stars">★ ★ ★</div>
-</body>
-</html>
+<p style="text-align:center;">
+    Don't have an account? <a href="{% url 'signup' %}">Sign Up</a>
+</p>
+<p style="text-align:center;">
+    <a href="{% url 'password_reset' %}">Forgot password?</a>
+</p>
+{% endblock %}

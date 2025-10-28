@@ -1,140 +1,76 @@
+
 body {
-    background: linear-gradient(135deg, #ff69b4, #ffa07a, #9932cc);
-    font-family: 'Impact', 'Arial Black', sans-serif;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff99cc, #99ff99);
+    min-height: 100vh;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.5); /* Set to a semi-transparent white */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 90%;
     max-width: 600px;
+    margin: 50px auto;
+    background-color: rgba(255,255,255,0.85);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
 
 h1 {
     text-align: center;
-    color: #2c3e50;
-    margin-bottom: 25px;
+    color: #333;
 }
 
-.add-form {
+form {
+    margin-bottom: 20px;
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    margin-bottom: 25px;
 }
 
-.add-form input[type="text"] {
-    flex-grow: 1;
-    padding: 12px;
-    border: 1px solid #ccc;
+input[type="text"], input[type="password"], input[type="email"] {
+    padding: 10px;
     border-radius: 5px;
-    font-size: 1rem;
+    border: 1px solid #ccc;
 }
 
-.add-form button {
-    padding: 12px 20px;
-    background-color: #9b59b6;
-    color: white;
+button {
+    padding: 10px;
     border: none;
     border-radius: 5px;
+    background-color: #ff99cc;
+    color: white;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+    transition: 0.3s;
 }
 
-.add-form button:hover {
-    background-color: #8e44ad;
+button:hover {
+    background-color: #ff66aa;
 }
 
 ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
-ul li {
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 15px;
-    margin-bottom: 10px;
-    background: #fdf5e6;
-    border-radius: 5px;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
 }
 
-ul li:before {
-     /* Updated bullet icon to a star emoji */
-    content: '⭐';
-    margin-right: 15px;
-    font-size: 1rem;
-}
-
-ul li.completed {
-    background: #dcdcdc;
+li.completed div {
     text-decoration: line-through;
-    color: #279eae;
+    color: gray;
 }
 
-ul li.completed:before {
-    content: '✔';
-    color: #2759ae;
-}
-
-.item-text {
-    flex-grow: 1;
-}
-
-.delete-btn {
-    font-size: 1rem;
+a {
     text-decoration: none;
-     color: #c0392b;
-    transition: color 0.3s ease;
+    color: #333;
 }
 
-.delete-btn:hover {
-    color: #e74c3c;
+a:hover {
+    text-decoration: underline;
 }
-
-    .deadline {
-        font-size: 0.9em;
-        color: midnightblue;
-        margin-left: 10px;
-    }
-
-    .complete-btn {
-        margin-left: 10px;
-        text-decoration: none;
-        font-size: 1.2em;
-    }
-
-    .completed .item-text {
-        text-decoration: line-through;
-        color: gray;
-    }
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #f0f0f0; /* light background for the header */
-    }
-
-    .logout-btn {
-        text-decoration: none;
-        color: #fff;
-        background-color: #ff4444; /* red button */
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-weight: bold;
-    }
-
-    .logout-btn:hover {
-        background-color: #cc0000;
-    }

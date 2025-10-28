@@ -1,32 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'accounts/auth_styles.css' %}">
-</head>
-<body>
-<div class="container">
-    <h1>Sign Up</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="username" placeholder="Username" required>
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
 
-        <label for="email">Email:</label>
-        <input id="email" type="email" name="email" placeholder="Email" required>
+{% block content %}
+<h1>Sign Up</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+<p style="text-align:center;">
+    Already have an account? <a href="{% url 'login' %}">Login</a>
+</p>
+{% endblock %}
 
-        <label for="password1">Password:</label>
-        <input id="password1" type="password" name="password1" placeholder="Password" required>
-
-        <label for="password2">Confirm Password:</label>
-        <input id="password2" type="password" name="password2" placeholder="Confirm Password" required>
-
-        <button type="submit">Sign Up</button>
-    </form>
-    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
-</div>
-</body>
-</html>
