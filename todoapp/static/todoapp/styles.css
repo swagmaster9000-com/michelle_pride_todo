@@ -118,3 +118,23 @@ ul li.completed:before {
         text-decoration: line-through;
         color: gray;
     }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f0f0f0; /* light background for the header */
+    }
+
+    .logout-btn {
+        text-decoration: none;
+        color: #fff;
+        background-color: #ff4444; /* red button */
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .logout-btn:hover {
+        background-color: #cc0000;
+    }
